@@ -7,7 +7,7 @@ WORKDIR '/app'
 #Copy the package.json file as this file has dependencies needed for the project. The dot indicates the file will copied inside the app destination folder
 COPY package.json .
 
-#Install all the dependencies using defined in package.json file
+#Install all the dependencies defined in package.json file
 RUN npm install
 
 #Now copy the rest of the project files from local system folder inside the container

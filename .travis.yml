@@ -1,0 +1,27 @@
+#Step 1: Tell Travis that we need a copy of Docker
+# need sudo (super user) permission when using docker
+sudo: required
+
+#Step 2: Build our image using Dockerdev.file
+# Travis CI need to understand that we need docker cli pre-installed
+services:
+  - docker
+
+# series of command executed before our tests are run
+# -t tags the docker image created with a name "bgatty/docker-react-demo"
+# -f forces to use the specified docker file
+before_install:
+  - docker build -t bgatty/docker-react-demo -f Dockerfile.dev .
+
+#Step 3: Tell Travis to run our Test Suite
+# The command -- -- coverage is basically used to exit the test. It returns the % of code including statements and functions covered 
+# by our tests.
+# npm run test overrides the default command specified in the Dockerfile.dev
+
+script:
+ - docker run bgatty/docker-react-demo npm run test -- --coverage
+
+
+ #Step 4: Tell Travis to how to deploy our code to AWS
+
+
