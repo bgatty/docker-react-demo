@@ -20,6 +20,10 @@ RUN npm run build
 #This is defining the run phase
 FROM nginx
 
+#Elasticbeanstalk when it starts the docker container, it is going to look at the Dockerfile and it is going to look for the Expose instruction
+#and the port listed in the instruction and will map it automatically to port 80 for the incoming traffic
+EXPOSE 80
+
 #Copy files from the builder phase to this new nginx container and specifically to /usr/share/nginx folder
 # As part of the image, the nginx will start automatically. So, no need to run the command 'RUN nginx' specifically
 COPY --from=builder /app/build /usr/share/nginx/html
