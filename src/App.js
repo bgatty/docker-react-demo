@@ -15,6 +15,7 @@ class App extends Component {
           <p>hi There. ye there. :)</p>
           <p>Brattys Docker Project</p>
           <p>Njinx Ready</p>
+          <p>I made changes on the feature branch</p>
           <a
             className="App-link"
             href="https://reactjs.org"
