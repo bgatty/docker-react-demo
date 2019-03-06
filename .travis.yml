@@ -23,5 +23,21 @@ script:
 
 
  #Step 4: Tell Travis to how to deploy our code to AWS
+deploy:
+  #travis ci comes pre-confifgured with certain providers like aws
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react-demo"
+  env: "DockerReactDemo-env"
+  #You can find this search for s3 under Services
+  bucket_name: "elasticbeanstalk-us-east-2-756027542603"
+  #bucket path is same as the app
+  bucket_path: "docker-react-demo"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
 
 
